@@ -11,16 +11,32 @@ body {
 }
 
 /* Header */
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    padding: 1rem 0;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+<header class="header">
+    <div class="container header-container">
+        
+        <div class="logo">
+            <img src="images/goldmak.jpeg" alt="Logo">
+            <span>Goldmak Marketing</span>
+        </div>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav id="menu" class="nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="index.html#products" class="nav-link">Products</a>
+            <a href="contact.html" class="nav-link active">Contact</a>
+        </nav>
+
+    </div>
+</header>
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .container {
@@ -506,4 +522,12 @@ input:focus, textarea:focus {
     .story-card {
         padding: 2rem;
     }
+}
+
+.contact-section {
+    padding: 100px 20px;
+}
+
+.contact-card {
+    width: 100%;
 }
