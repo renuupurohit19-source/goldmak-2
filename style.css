@@ -19,8 +19,12 @@ body {
 /* CONTAINER */
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     padding: 0 20px;
+}
+
+section {
+    width: 100%;
 }
 
 /* HEADER */
@@ -97,10 +101,15 @@ body {
     justify-content: center;
     text-align: center;
     color: white;
+    padding-top: 120px;
     padding: 120px 20px 40px; /* FIX header overlap */
     position: relative;
 }
-
+.hero-content,
+.story-content {
+    margin: auto;
+    text-align: center;
+}
 .hero-content {
     max-width: 700px;
     animation: slideInUp 1s ease-out;
@@ -234,6 +243,63 @@ body {
     .nav.active {
         right: 0;
     }
+
+    .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+    @media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+    input, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+
+textarea {
+    resize: none;
+}
+
+    .full-width {
+    width: 100%;
+}
+
+    .contact-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+    .story-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.leaders {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.leader {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
 
     .hero h1 {
         font-size: 2rem;
