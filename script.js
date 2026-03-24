@@ -1,93 +1,45 @@
-// MOBILE MENU TOGGLE
-function toggleMenu() {
-    const menu = document.getElementById("menu");
-
-    if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
     } else {
-        menu.classList.add("active");
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = 'none';
     }
-}
+});
 
-// DOM READY
-document.addEventListener("DOMContentLoaded", () => {
-
-    const menu = document.getElementById("menu");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    // CLOSE MENU WHEN CLICKING LINK (MOBILE)
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            menu.classList.remove("active");
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector(anchor.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
         });
-    });
-
-    // SMOOTH SCROLLING (FIXED HEADER OFFSET)
-   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-        const href = this.getAttribute("href");
-
-        if (href === "#" || href === "#!") return;
-
-        const target = document.querySelector(href);
-
-        if (target) {
-            e.preventDefault();
-
-            window.scrollTo({
-                top: target.offsetTop - 80,
-                behavior: "smooth"
-            });
-        }
     });
 });
 
-    // ACTIVE NAV LINK ON SCROLL (FIXED)
-    window.addEventListener("scroll", () => {
-        const sections = document.querySelectorAll("section");
-        let currentSection = "";
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 120;
-
-            if (window.scrollY >= sectionTop) {
-                currentSection = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-
-            if (link.getAttribute("href") === `#${currentSection}`) {
-                link.classList.add("active");
-            }
-        });
-    });
-
-});
-
-
-// CONTACT FORM VALIDATION (IMPROVED)
-function validateForm() {
-    const name = document.getElementById("name")?.value.trim();
-    const email = document.getElementById("email")?.value.trim();
-    const message = document.getElementById("message")?.value.trim();
-
-    // EMPTY CHECK
-    if (!name || !email || !message) {
-        alert("⚠️ Please fill all fields!");
-        return false;
+// Live gold price (simulated - replace with real API)
+function updateGoldPrice() {
+    if (document.getElementById('goldPrice')) {
+        const price = (2450 + (Math.random() - 0.5) * 20).toFixed(2);
+        const change = ((Math.random() - 0.5) * 2).toFixed(2);
+        document.getElementById('goldPrice').textContent = `$${price}`;
+        
+        const changeEl = document.getElementById('priceChange');
+        const isPositive = parseFloat(change) > 0;
+        changeEl.textContent = `${isPositive ? '+' : ''}${change}%`;
+        changeEl.className = `price-change ${isPositive ? 'positive' : 'negative'}`;
     }
-
-    // EMAIL VALIDATION (PROPER)
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(email)) {
-        alert("⚠️ Please enter a valid email address!");
-        return false;
-    }
-
-    // SUCCESS
-    alert("✅ Message sent successfully! We'll reply within 24 hours.");
-    return true;
 }
+
+// Contact form submission
+function handleContactForm(e) {
+    e.preventDefault();
+    alert('Thank you! Your message has been sent. 🚀');
+    e.target.reset();
+}
+
+setInterval(updateGoldPrice, 5000);
+updateGoldPrice();
