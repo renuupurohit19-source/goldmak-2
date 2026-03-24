@@ -11,28 +11,28 @@ body {
     overflow-x: hidden;
 }
 
-/* HEADER PADDING - FIXED */
+/* HEADER - FIXED */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 1.2rem 0;  /* Increased padding */
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
 }
- .header-container {
+
+.header-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 80px;   /* Fixed height */
 }
-/* LOGO - FIXED (Replace the old logo CSS) */
+
 .logo {
     display: flex;
     align-items: center;
@@ -43,6 +43,12 @@ body {
     text-decoration: none;
 }
 
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    object-fit: cover;
+}
 
 .menu-btn {
     background: #2563eb;
@@ -54,13 +60,7 @@ body {
     font-size: 1.2rem;
     display: none;
 }
-.logo img {
-    width: 60px;        /* Increased from 50px */
-    height: 60px;       /* Increased from 50px */
-    border-radius: 12px;
-    object-fit: cover;  /* Keeps aspect ratio */
-    flex-shrink: 0;     /* Prevents shrinking */
-}
+
 .nav {
     display: flex;
     align-items: center;
@@ -92,7 +92,7 @@ body {
     text-align: center;
     color: white;
     position: relative;
-    padding-top: 100px; /* Increased for header */
+    padding-top: 80px; /* Header space */
 }
 
 .hero::before {
@@ -325,16 +325,10 @@ input:focus, textarea:focus {
     padding: 2rem 0;
 }
 
+/* MOBILE MENU - FIXED */
 @media (max-width: 768px) {
-    .logo img {
-        width: 55px;     /* Slightly smaller on mobile */
-        height: 55px;
-    }
+    .menu-btn { display: block; }
     
-    .header {
-        padding: 1rem 0;
-    }
-}
     .nav {
         position: fixed;
         top: 80px;
