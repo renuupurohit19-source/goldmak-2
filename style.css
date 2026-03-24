@@ -69,14 +69,38 @@ body {
     cursor: pointer;
     font-size: 1.2rem;
     display: none;
+    
+
+}
+
+@media (max-width: 768px) {
+    .product-grid,
+    .contact-grid,
+    .strengths-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+body {
+    overflow-x: hidden;
 }
 
 .nav {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
-
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 220px;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;     
+        padding: 2rem;
+        gap: 1rem;
+        transition: 0.3s ease;
+        box-shadow: -10px 0 20px rgba(0,0,0,0.1);
+    } 
+ .nav.active {
+        right: 0;
+    }
 .nav-link {
     text-decoration: none;
     color: #666;
@@ -84,6 +108,8 @@ body {
     padding: 10px 20px;
     border-radius: 25px;
     transition: all 0.3s ease;
+      display: block;
+        width: 100%;
 }
 
 .nav-link:hover, .nav-link.active {
