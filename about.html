@@ -3,53 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Goldmak 2</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>About - Goldmak Marketing | 28+ Years Excellence</title>
+    <meta name="description" content="Established 1997 | ISO-9001:2000 Certified | Trusted Electrical Supplier in Bengaluru">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-    <!-- Navigation (same as index) -->
-    <nav class="navbar">
-        <div class="nav-container container">
-            <div class="logo">Goldmak 2</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            <img src="images/goldmak.jpeg" alt="Goldmak Logo">
+            <span>Goldmak Marketing</span>
+        </a>
 
-    <!-- About Hero -->
-    <section class="about-hero">
-        <div class="container">
-            <h1>About Goldmak 2</h1>
-            <p>The future of gold trading is here. Built by traders, for traders.</p>
-        </div>
-    </section>
+        <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+        </button>
 
-    <!-- About Content -->
-    <section style="padding: 100px 0; background: #f8f9fa;">
-        <div class="container about-content">
-            <h2>Our Mission</h2>
-            <p>Goldmak 2 was founded in 2023 to democratize gold trading. We believe everyone should have access to institutional-grade tools without the hefty fees.</p>
-            <br>
-            <h2>50K+</h2>
-            <p>Active traders worldwide</p>
-            <br>
-            <h2>$500M+</h2>
-            <p>Monthly trading volume</p>
-        </div>
-    </section>
+        <nav id="menu" class="nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link active">About</a>
+            <a href="index.html#products" class="nav-link">Products</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+    </div>
+</header>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Goldmak 2. All rights reserved.</p>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <i class="fas fa-calendar"></i> Established 1997
         </div>
-    </footer>
+        <h1>28+ Years of Excellence</h1>
+        <p>ISO-9001:2000 Certified • Trusted Across India • Bengaluru's Finest</p>
+        
+        <div class="hero-buttons">
+            <a href="contact.html" class="btn btn-primary">
+                <i class="fas fa-phone"></i> Contact Us
+            </a>
+            <a href="index.html#products" class="btn btn-secondary">
+                <i class="fas fa-shopping-cart"></i> Our Products
+            </a>
+        </div>
+    </div>
+</section>
 
-    <script src="script.js"></script>
+<!-- ABOUT CONTENT -->
+<section class="about-section">
+    <div class="container">
+        <!-- STORY -->
+        <div class="story-card">
+            <div class="story-content">
+                <h2 class="section-title">
+                    <i class="fas fa-history"></i> Our Journey Since 1997
+                </h2>
+                <p class="story-text">
+                    Founded by visionary leader <strong>Mr. Ramlal Rajpurohit</strong> in 1997, 
+                    Goldmak Marketing has grown into Bengaluru's most trusted electrical supplier.
+                </p>
+                <p class="story-text">
+                    With <strong>ISO-9001:2000 certification</strong> and serving thousands of customers,
+                    we deliver premium quality products that power homes, offices, and industries.
+                </p>
+                
+                <div class="leaders">
+                    <div class="leader">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>Mr. Ramlal Rajpurohit</h4>
+                        <p>Managing Director</p>
+                    </div>
+                    <div class="leader">
+                        <i class="fas fa-user-graduate"></i>
+                        <h4>Mr. Sathish Singh</h4>
+                        <p>CEO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STRENGTHS -->
+        <h2 class="section-title">
+            <i class="fas fa-star"></i> Why Choose Goldmak?
+        </h2>
+        <div class="strengths-grid">
+            <div class="strength-card">
+                <i class="fas fa-award"></i>
+                <h4>Premium Quality</h4>
+                <p>ISO Certified • Industry Standards</p>
+            </div>
+            <div class="strength-card">
+                <i class="fas fa-infinity"></i>
+                <h4>28+ Years Experience</h4>
+                <p>Trusted Since 1997</p>
+            </div>
+            <div class="strength-card">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Safety Guaranteed</h4>
+                <p>Advanced Protection</p>
+            </div>
+            <div class="strength-card">
+                <i class="fas fa-layer-group"></i>
+                <h4>Complete Range</h4>
+                <p>Wires to Sockets</p>
+            </div>
+            <div class="strength-card">
+                <i class="fas fa-dollar-sign"></i>
+                <h4>Best Prices</h4>
+                <p>Premium Quality • Affordable</p>
+            </div>
+            <div class="strength-card">
+                <i class="fas fa-lightbulb"></i>
+                <h4>Latest Technology</h4>
+                <p>Future Ready Solutions</p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h3>Ready to Power Your Next Project?</h3>
+            <div class="hero-buttons">
+                <a href="index.html#products" class="btn btn-primary">View Products</a>
+                <a href="contact.html" class="btn btn-secondary">Get Quote Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Goldmak Marketing. ISO Certified | Bengaluru | <a href="contact.html">Contact Us</a></p>
+    </div>
+</footer>
+
+<!-- JS -->
+<script src="script.js"></script>
 </body>
 </html>
