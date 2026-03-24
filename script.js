@@ -1,45 +1,97 @@
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
-    }
-});
+// MOBILE MENU TOGGLE - FIXED
+function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("active");
+}
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelector(anchor.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+// DOM READY
+document.addEventListener("DOMContentLoaded", () => {
+    const menu = document.getElementById("menu");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // CLOSE MENU ON LINK CLICK (MOBILE)
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            menu.classList.remove("active");
+        });
+    });
+
+    // CLOSE MENU ON OUTSIDE CLICK
+    document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target) && !e.target.closest(".menu-btn")) {
+            menu.classList.remove("active");
+        }
+    });
+
+    // SMOOTH SCROLLING
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+            
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                const offset = 100;
+                const top = target.offsetTop - offset;
+                window.scrollTo({ top, behavior: "smooth" });
+            }
+        });
+    });
+
+    // ACTIVE NAV LINK ON SCROLL
+    window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        let currentSection = "";
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (window.scrollY >= sectionTop) {
+                currentSection = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${currentSection}` || 
+                (currentSection === "" && link.getAttribute("href") === "index.html")) {
+                link.classList.add("active");
+            }
         });
     });
 });
 
-// Live gold price (simulated - replace with real API)
-function updateGoldPrice() {
-    if (document.getElementById('goldPrice')) {
-        const price = (2450 + (Math.random() - 0.5) * 20).toFixed(2);
-        const change = ((Math.random() - 0.5) * 2).toFixed(2);
-        document.getElementById('goldPrice').textContent = `$${price}`;
-        
-        const changeEl = document.getElementById('priceChange');
-        const isPositive = parseFloat(change) > 0;
-        changeEl.textContent = `${isPositive ? '+' : ''}${change}%`;
-        changeEl.className = `price-change ${isPositive ? 'positive' : 'negative'}`;
+// CONTACT FORM VALIDATION - FIXED
+function validateForm() {
+    const name = document.getElementById("name")?.value?.trim();
+    const email = document.getElementById("email")?.value?.trim();
+    const message = document.getElementById("message")?.value?.trim();
+    const phone = document.getElementById("phone")?.value?.trim();
+
+    // REQUIRED FIELDS
+    if (!name || !email || !message) {
+        alert("⚠️ Please fill all required fields (*)");
+        return false;
     }
-}
 
-// Contact form submission
-function handleContactForm(e) {
-    e.preventDefault();
-    alert('Thank you! Your message has been sent. 🚀');
-    e.target.reset();
-}
+    // EMAIL VALIDATION
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert("⚠️ Please enter a valid email address!");
+        document.getElementById("email").focus();
+        return false;
+    }
 
-setInterval(updateGoldPrice, 5000);
-updateGoldPrice();
+    // PHONE VALIDATION (OPTIONAL)
+    if (phone && !/^\+?\d{10,15}$/.test(phone.replace(/\s/g, ''))) {
+        alert("⚠️ Please enter a valid phone number!");
+        return false;
+    }
+
+    // SUCCESS
+    alert("✅ Thank you! Your message has been sent. We'll reply within 24 hours.");
+    
+    // RESET FORM
+    document.querySelector('form').reset();
+    return false; // Prevent actual submit
+}
