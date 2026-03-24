@@ -1,7 +1,12 @@
 // MOBILE MENU TOGGLE
 function toggleMenu() {
     const menu = document.getElementById("menu");
-    menu.classList.toggle("active");
+
+    if (menu.classList.contains("active")) {
+        menu.classList.remove("active");
+    } else {
+        menu.classList.add("active");
+    }
 }
 
 // DOM READY
@@ -18,27 +23,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // SMOOTH SCROLLING (FIXED HEADER OFFSET)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            const targetId = this.getAttribute("href");
+   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
 
-            if (targetId === "#") return;
+        if (href === "#" || href === "#!") return;
 
-            const target = document.querySelector(targetId);
+        const target = document.querySelector(href);
 
-            if (target) {
-                e.preventDefault();
+        if (target) {
+            e.preventDefault();
 
-                const offset = 80; // header height
-                const top = target.offsetTop - offset;
-
-                window.scrollTo({
-                    top: top,
-                    behavior: "smooth"
-                });
-            }
-        });
+            window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: "smooth"
+            });
+        }
     });
+});
 
     // ACTIVE NAV LINK ON SCROLL (FIXED)
     window.addEventListener("scroll", () => {
